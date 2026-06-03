@@ -39,3 +39,16 @@ with torch.no_grad():
     test_distance = torch.tensor([[7.0]], dtype=torch.float32)
     predicted_time = model(test_distance)
     print(f"Predicted time for 25 miles : {predicted_time.item():.1f} minutes")
+
+
+# Inspecting the model
+
+# Access the first (and only) layer in the sequential model
+layer = model[0]
+
+# Get weights and bias
+weights = layer.weight.data.numpy()
+bias = layer.bias.data.numpy()
+
+print(f"Weight: {weights}")
+print(f"Bias: {bias}")
