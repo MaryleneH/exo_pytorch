@@ -28,7 +28,7 @@ for epoch in range(500):
 
     # 4. Update the model
     optimizer.step()
-    
+
     # Print loss every 50 epochs
     if (epoch + 1) % 50 == 0:
         print(f"Epoch {epoch + 1}: Loss = {loss.item()}")
@@ -36,6 +36,6 @@ for epoch in range(500):
 ## Make a prediction
 
 with torch.no_grad():
-    test_distance = torch.tensor([[25.0]], dtype=torch.float32)
+    test_distance = torch.tensor([[7.0]], dtype=torch.float32)
     predicted_time = model(test_distance)
     print(f"Predicted time for 25 miles : {predicted_time.item():.1f} minutes")
