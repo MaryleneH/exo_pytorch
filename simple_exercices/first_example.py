@@ -14,17 +14,24 @@ optimizer = optim.SGD(model.parameters(), lr=0.01)
 # Training loop
 
 for epoch in range(500):
-    #0. Reset the optimizer
+    # 0. Reset the optimizer
     optimizer.zero_grad()
 
-    #1. Make predictions
+    # 1. Make predictions
     outputs = model(distances)
 
-    #2. Calculate the loss 
+    # 2. Calculate the loss 
     loss = loss_function(outputs, times)
 
-    #3. Calculate adjustments 
+    # 3. Calculate adjustments 
     loss.backward()
 
-    #4. Update the model
+    # 4. Update the model
     optimizer.step()
+
+## Make a prediction
+
+with torch.no_grad():
+    test_distance = torch.tensor([[25.0]], dtype=torch.float32)
+    predicted_time = model(test_distance)
+    print(f"Predicted time for 25 miles : {predicted_time.item():.1f} minutes")
