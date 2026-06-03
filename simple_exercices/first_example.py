@@ -28,6 +28,10 @@ for epoch in range(500):
 
     # 4. Update the model
     optimizer.step()
+    
+    # Print loss every 50 epochs
+    if (epoch + 1) % 50 == 0:
+        print(f"Epoch {epoch + 1}: Loss = {loss.item()}")
 
 ## Make a prediction
 
